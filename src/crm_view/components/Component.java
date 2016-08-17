@@ -11,7 +11,7 @@ public interface Component {
 
     Parent getComponent(final int width,final Column columns);
 
-    static boolean checkDataPicker(Column columns) {
+    static boolean isDataPicker(Column columns) {
         return columns.toString().equals(DATE_START) ||
                 columns.toString().equals(DATE_FINAL);
     }

@@ -19,7 +19,6 @@ public class TextField extends javafx.scene.control.TextField implements Compone
         return textField;
     }
 
-
     public static boolean checkTextField(final List<javafx.scene.control.TextField> tf) {
         for (int i = 0; i < tf.size(); i++) {
             if (tf.get(i).getText().isEmpty()) {

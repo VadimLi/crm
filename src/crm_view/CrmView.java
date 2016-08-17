@@ -10,16 +10,15 @@ import javafx.scene.text.Font;
 
 public class CRMView {
 
-    private static final int WIDTH_FRAME = 900;
+    private static final String TITLE = "CRM for Hostels";
 
-    private     static      final       int         HEIGHT_FRAME    =       700;
+    private static final String ADD_BUTTON = "Add button";
 
-    private     static      final       String      TITLE           =       "CRM FOR HOSTELS";
+    private static final String DELETE_ROW = "Delete row";
 
-    private     static      final       String      ADD_BUTTON           =       "Add button";
+    private static final String FONT_ARIAL = "Arial";
 
-    private     static      final       String      DELETE_ROW           =       "Add button";
-
+    private static final int SIZE_FONT_LABEL = 25;
 
 
     private final Label label = new Label(TITLE);
@@ -41,7 +40,7 @@ public class CRMView {
     }
 
     public Label getLabelTitle() {
-        label.setFont(new Font("Arial", 25));
+        label.setFont(new Font(FONT_ARIAL, SIZE_FONT_LABEL));
         return label;
     }
 
@@ -57,10 +56,10 @@ public class CRMView {
                                       final int width) {
         return column.getColumn().
                         newBuilder().
-                title(column.toString()).
-                valueFactory(convertToLowerCase(column)).
-                minWidth(width).
-                create();
+                        title(column.toString()).
+                        valueFactory(convertToLowerCase(column)).
+                        minWidth(width).
+                        create();
     }
 
     private static String convertToLowerCase(Column columns) {

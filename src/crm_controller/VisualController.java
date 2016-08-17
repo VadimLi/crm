@@ -50,11 +50,11 @@ public class VisualController {
         table.setItems(dataList);
     }
 
-    private static void chrckDataPickers(final int width,
+    private static void checkDataPickers(final int width,
                                          final Column column,
                                          final List<TextField> textFields,
                                          final List<DatePicker> datePickers) {
-        if (Component.checkDataPicker(column)) {
+        if (Component.isDataPicker(column)) {
             datePickers.add((DatePicker) new crm_view.components.DatePicker().
                     getComponent(width, column));
         } else {
@@ -71,7 +71,7 @@ public class VisualController {
             width = WIDTH_ID;
         } else {
             width = WIDTH_STRING;
-            chrckDataPickers(width, column, textFields, datePickers);
+            checkDataPickers(width, column, textFields, datePickers);
         }
     }
 

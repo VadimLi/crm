@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.lang.reflect.Field;
 
-public final class Contacts {
+public class Contacts {
 
     public SimpleStringProperty name;
 

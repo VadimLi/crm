@@ -1,5 +1,6 @@
 import crm_controller.DataController;
 import crm_controller.VisualController;
+import crm_model.Model;
 import crm_model.contacts.Contacts;
 import crm_view.CRMView;
 import javafx.application.Application;
@@ -33,17 +34,17 @@ public class CRM extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        final Contacts contacts = new Contacts();
+        final Model model = new Model();
         final CRMView crmView = new CRMView();
-        final DataController dataController = new DataController(contacts);
+        final DataController dataController = new DataController(model);
         final VisualController visualController = new VisualController(crmView);
 
         final Scene scene = new Scene(new javafx.scene.Group());
-        stage.setTitle("TITLE");
-        stage.setWidth(1200);
-        stage.setHeight(700);
+        stage.setTitle(model.getNameCRM());
+        stage.setWidth(model.getWidthFrame());
+        stage.setHeight(model.getHeightFrame());
 
-        crmView.addNewColumn(textFields, datePickers, table, dataList);
+        visualController.addNewColumn(textFields, datePickers, table, dataList);
 
         crmView.getAddButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -57,7 +58,9 @@ public class CRM extends Application{
             public void handle(ActionEvent event) {
                 //DB
                 int row = table.getSelectionModel().getSelectedIndex();
-                table.getItems().remove(row);
+                if(row != -1) {
+                    table.getItems().remove(row);
+                }
             }
         });
 

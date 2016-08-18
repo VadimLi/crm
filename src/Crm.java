@@ -1,6 +1,7 @@
 import crm_controller.DataController;
 import crm_controller.VisualController;
-import crm_model.Model;
+import crm_model.PaddingVbox;
+import crm_model.System;
 import crm_model.contacts.Contacts;
 import crm_view.CRMView;
 import javafx.application.Application;
@@ -28,21 +29,23 @@ public class CRM extends Application{
 
     private final javafx.scene.control.TableView<Contacts> table = new javafx.scene.control.TableView<Contacts>();
 
+    private final System system = new System();
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        final Model model = new Model();
+        final Contacts contacts = new Contacts();
         final CRMView crmView = new CRMView();
-        final DataController dataController = new DataController(model);
+        final DataController dataController = new DataController(contacts);
         final VisualController visualController = new VisualController(crmView);
 
         final Scene scene = new Scene(new javafx.scene.Group());
-        stage.setTitle(model.getNameCRM());
-        stage.setWidth(model.getWidthFrame());
-        stage.setHeight(model.getHeightFrame());
+        stage.setTitle(system.getNameCRM());
+        stage.setWidth(system.getWidthFrame());
+        stage.setHeight(system.getHeightFrame());
 
         visualController.addNewColumn(textFields, datePickers, table, dataList);
 
@@ -58,7 +61,7 @@ public class CRM extends Application{
             public void handle(ActionEvent event) {
                 //DB
                 int row = table.getSelectionModel().getSelectedIndex();
-                if(row != -1) {
+                if(row != system.getLimitDeletingRow()) {
                     table.getItems().remove(row);
                 }
             }
@@ -69,11 +72,14 @@ public class CRM extends Application{
 
         crmView.getHbox().getChildren().addAll(crmView.getAddButton(),
                                 crmView.getDeleteButton());
-        crmView.getHbox().setSpacing(5);
+        crmView.getHbox().setSpacing(system.getSpacingVboxOrHbox());
 
+        crmView.getVbox().setSpacing(system.getSpacingVboxOrHbox());
+        crmView.getVbox().setPadding(new Insets( PaddingVbox.TOP.getValue(),
+                                                 PaddingVbox.LEFT.getValue(),
+                                                 PaddingVbox.BOTTOM.getValue(),
+                                                 PaddingVbox.RIGHT.getValue() ));
 
-        crmView.getVbox().setSpacing(5);
-        crmView.getVbox().setPadding(new Insets(10, 0, 0, 10));
         crmView.getVbox().getChildren().addAll(crmView.getLabelTitle(), table, crmView.getHbox());
 
         ((Group) scene.getRoot()).getChildren().addAll(crmView.getVbox());

@@ -20,7 +20,6 @@ public class CRMView {
 
     private static final int SIZE_FONT_LABEL = 25;
 
-
     private final Label label = new Label(TITLE);
 
     private final Button addButton = new Button(ADD_BUTTON);

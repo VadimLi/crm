@@ -29,7 +29,11 @@ public class CRM extends Application{
 
     private final javafx.scene.control.TableView<Contacts> table = new javafx.scene.control.TableView<Contacts>();
 
-    private final System system = new System();
+    private final System system = new System(CRMView.TITLE,
+                                             CRMView.LIMIT_DELETING_ROW,
+                                             CRMView.WIDTH_FRAME,
+                                             CRMView.HEIGHT_FRAME,
+                                             CRMView.SPACING_VBOX);
 
     public static void main(String[] args) {
         launch(args);

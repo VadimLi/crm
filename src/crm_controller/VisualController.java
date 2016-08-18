@@ -14,9 +14,6 @@ import java.util.List;
 
 public class VisualController {
 
-    private       static      final       int         WIDTH_STRING    =       100;
-    private       static      final       int         WIDTH_ID        =       40;
-
     private final CRMView crmView;
 
     public VisualController(final CRMView crmView) {
@@ -68,9 +65,9 @@ public class VisualController {
                                      final List<TextField> textFields,
                                      final List<DatePicker> datePickers) {
         if(column.equals(Column.ID)) {
-            width = WIDTH_ID;
+            width = CRMView.WIDTH_ID;
         } else {
-            width = WIDTH_STRING;
+            width = CRMView.WIDTH_STRING;
             checkDataPickers(width, column, textFields, datePickers);
         }
     }

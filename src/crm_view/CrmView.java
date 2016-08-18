@@ -10,7 +10,19 @@ import javafx.scene.text.Font;
 
 public class CRMView {
 
-    private static final String TITLE = "CRM for Hostels";
+    public static final String TITLE = "CRM FOR HOSTELS";
+
+    public static final int LIMIT_DELETING_ROW = -1;
+
+    public static final int WIDTH_FRAME = 1200;
+
+    public static final int HEIGHT_FRAME = 700;
+
+    public static final int SPACING_VBOX = 5;
+
+    public static final int WIDTH_STRING = 100;
+
+    public static final int WIDTH_ID = 40;
 
     private static final String ADD_BUTTON = "Add button";
 

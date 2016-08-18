@@ -2,15 +2,27 @@ package crm_model;
 
 public final class System  {
 
-    private final String title = "CRM FOR HOSTELS";
+    private final String title;
 
-    private final int limitDeletingRow = -1;
+    private final int limitDeletingRow;
 
-    private final int widthFrame = 1200;
+    private final int widthFrame;
 
-    private final int heightFrame = 700;
+    private final int heightFrame;
 
-    private final int spacingVbox = 5;
+    private final int spacingVbox;
+
+    public System(final String title,
+                  final int limitDeletingRow,
+                  final int widthFrame,
+                  final int heightFrame,
+                  final int spacingVbox) {
+        this.title = title;
+        this.limitDeletingRow = limitDeletingRow;
+        this.widthFrame = widthFrame;
+        this.heightFrame = heightFrame;
+        this.spacingVbox = spacingVbox;
+    }
 
     public String getNameCRM() {
         return title;
